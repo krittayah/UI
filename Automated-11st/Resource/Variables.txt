@@ -1,0 +1,41 @@
+*** Settings ***
+Library    Selenium2Library
+Library    String
+Library    random
+Resource    ../Resource/Login.txt
+Resource    ../Resource/Search.txt
+Resource    ../Resource/Homepage.txt
+Resource    ../Resource/BuyProduct.txt
+Resource    ../Resource/ShoppingCart.txt
+    
+
+*** Variables ***
+
+#Login to Homepage#
+${Login}    id = gnbLogin
+${Email}      id =  loginName
+${Password}   id =  passWord
+${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
+
+#Register New Buyer#
+${regisNew_btn}    id = gnbRegister
+${buyer_btn}    xpath = //ul[2]/li[1]/a[@class=('btn_st btn_em5 btn_s5')]
+${regis_name}    id = memNM
+${buyer_email}    id = memIDView
+${buyer_password}    id = mem_pwd
+${buyer_re-password}    id = mem_re_pwd
+${register_btn}    xpath = //div[@class='btn_c btn_t']/button[contains(@onclick, 'javascript:registMember')]
+
+#Register Individual Seller#  
+${ind_seller_btn}    xpath = //ul[2]/li[2]/a[@class=('btn_st btn_em5 btn_s5')]
+${DOB_date}    name = day
+${DOB_month}    name = month
+${DOB_year}    name = year
+${ind_phone_no}    id = memPrtblTlphnNO1
+${ind_shop_name}    id = chkMemNickNM
+${ind_shop_url}    id = chkSelstoreUrl
+
+#Person in Charge#
+${ind_checkbox}    //div[5]/table/tbody/tr[1]/td/div[1]/label/input[@type=('checkbox')]
+${ind_picName}    id = crgrNm
+

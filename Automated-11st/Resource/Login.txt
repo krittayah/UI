@@ -2,31 +2,32 @@
 Library    Selenium2Library
 Library    String
 Library    random
+Resource    ../Resource/Variables.txt
     
 
 *** Variables ***
 
-#Login to Homepage#
-${Login}    id = gnbLogin
-${Email}      id =  loginName
-${Password}   id =  passWord
-${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
+# #Login to Homepage#
+# ${Login}    id = gnbLogin
+# ${Email}      id =  loginName
+# ${Password}   id =  passWord
+# ${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
 
-#Register New Buyer #
-${regisNew_btn}    id = gnbRegister
-${buyer_btn}    xpath = //ul[2]/li[1]/a[@class=('btn_st btn_em5 btn_s5')]
-${regis_name}    id = memNM
-${buyer_email}    id = memIDView
-${buyer_password}    id = mem_pwd
-${buyer_re-password}    id = mem_re_pwd
-${register_btn}    xpath = //div[@class='btn_c btn_t']/button[contains(@onclick, 'javascript:registMember')]
+# #Register New Buyer #
+# ${regisNew_btn}    id = gnbRegister
+# ${buyer_btn}    xpath = //ul[2]/li[1]/a[@class=('btn_st btn_em5 btn_s5')]
+# ${regis_name}    id = memNM
+# ${buyer_email}    id = memIDView
+# ${buyer_password}    id = mem_pwd
+# ${buyer_re-password}    id = mem_re_pwd
+# ${register_btn}    xpath = //div[@class='btn_c btn_t']/button[contains(@onclick, 'javascript:registMember')]
 
-#Register Individual Seller #  
-${ind_seller_btn}    xpath = //ul[2]/li[2]/a[@class=('btn_st btn_em5 btn_s5')]
-${DOB_date}    name = day
-${datelist}    xpath = //tr[3]/td/select[1]
-
-
+# #Register Individual Seller #  
+# ${ind_seller_btn}    xpath = //ul[2]/li[2]/a[@class=('btn_st btn_em5 btn_s5')]
+# ${DOB_date}    name = day
+# ${DOB_month}    name = month
+# ${DOB_year}    name = year
+# ${ind_phone_no}    id = memPrtblTlphnNO1
 
 *** Keywords ***
 Login to Homepage
@@ -73,7 +74,7 @@ Register New Individual Seller
     Click Element    ${ind_seller_btn}
     # Name
     Click Element    ${regis_name}
-     ${random_name} =    Generate Random String    8
+    ${random_name} =    Generate Random String    8
     Input Text    ${regis_name}    ${random_name}
     
      # Email
@@ -83,7 +84,10 @@ Register New Individual Seller
     [Return]    ${ranEmail}
     Input Text    ${buyer_email}    ${ranEmail}
     
-    # DOB
+    # Select date
+    ${numbers} =    Evaluate    random.randint(1, 31)    	modules=random
+    ${ranDate} =    Convert To String   ${numbers}
+    Select From List By Value    ${DOB_date}    ${ranDate}
     # ${number} =    Evaluate    random.sample(range(1, 11), 1)    random
     # :FOR    ${i}    IN RANGE    1    31
     # \    ${randate} =    Convert To Number    ${number}[${i}]
@@ -91,10 +95,58 @@ Register New Individual Seller
     # Select From List By Value	${DOB_date}    ${randate}
     # ${child node click value}=      random.randint    1    31
     # ${aaa} =    Convert To Number    ${child node click value} 
-    # Select From List By Value    ${datelist}    ${aaa}   
-    
-    
+    # Select From List By Value    ${datelist}    ${aaa}     
     # ${numbers} =    Generate Random String    1   [NUMBERS] 
-    ${numbers} =    Evaluate    random.randint(1, 31)    	modules=random
-    ${aaa} =    Convert To String   ${numbers}
-    Select From List By Value    ${DOB_date}    ${aaa}
+    
+    # Select month
+    ${numbers} =    Evaluate    random.randint(1, 12)    	modules=random
+    ${ranMonth} =    Convert To String   ${numbers}
+    Select From List By Value    ${DOB_month}    ${ranMonth}
+
+    
+    # Select year
+    ${numbers} =    Evaluate    random.randint(1900, 2013)    	modules=random
+    ${ranYear} =    Convert To String   ${numbers}
+    Select From List By Value    ${DOB_year}    ${ranYear}
+    
+    # Phone number
+    Click Element    ${ind_phone_no}
+    ${random_phone_no} =    Generate Random String    10    [NUMBERS]
+    Input Text    ${ind_phone_no}    ${random_phone_no}
+    
+    # Shop name
+    Click Element    ${ind_shop_name}
+    ${random_shop_name} =    Generate Random String    20
+    Input Text    ${ind_shop_name}    ${random_shop_name}
+    
+    # Shop URL
+    Click Element    ${ind_shop_url}
+    ${random_shop_url} =    Generate Random String    8
+    Input Text    ${ind_shop_url}    ${random_shop_url}
+    
+    # Password 
+    # Click Element    ${buyer_password}
+    # ${random_pwd} =    Generate Random String    4
+    # ${ranPWD} =    Set Variable    ${random_pwd}@
+    # Input Password    ${buyer_password}    ${ranPWD}
+    #Click Element    ${buyer_re-password}
+    #Element Should Be Visible    //div[3]/table/tbody/tr[7]/td/em    กรอกรหัสผ่านความยาว 6-20 ตัวอักษร
+    Click Element    ${buyer_password}
+    ${random_pwd} =    Generate Random String    8
+    ${ranPWD} =    Set Variable    ${random_pwd}@
+    Input Password    ${buyer_password}    ${ranPWD}
+    
+    # Confirm Password
+    Click Element    ${buyer_re-password}
+    Input Password    ${buyer_re-password}    ${ranPWD}
+    
+    # Person in Charge
+    Select Checkbox    ${ind_checkbox} 
+    Click Element    ${ind_picName}
+    ${random_name} =    Generate Random String    8
+    Input Text    ${ind_picName}    ${random_name}
+    
+    
+    # 
+    
+    
