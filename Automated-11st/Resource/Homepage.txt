@@ -1,0 +1,66 @@
+*** Settings ***
+Library    Selenium2Library
+
+
+*** Variables ***
+#MAIN MENU
+${ShockingDeals}   xpath = //*[@id="gnb"]/div/ul/li[1]/a
+${BestSeller}      xpath = //*[@id="gnb"]/div/ul/li[2]/a
+${Benefits}        xpath = //*[@id="gnb"]/div/ul/li[3]/a
+${ShockingDeals_icon}    xpath = //*[@id="container"]/div[2]/ul/li[1]
+${ShockingDealsTab}    class = tab_m5
+${BestSellersTab}    class = tab_m8
+${BenefitsTab}    name = partnerTab
+${SmallBanner}    class = cont_wrap
+
+
+#GLOBAL NAVIGATION
+${SwitchLang}    id = switcher-language
+${Lang}    class = lang th switcher-th on
+${SellOn11st}    xpath = //*[@id="util"]/div/ul[1]/li[2]/a
+${SellOn11st_item}    class = seller_office
+${Login}    id = gnbLogin
+${Register}    id = gnbRegister
+${CustomerService}    xpath = //*[@id="util"]/div/ul[2]/li[3]/a
+${MyPage}   id= myPage
+${MyPage_item}    xpath = //*[@id="util"]/div/ul[2]/li[4]/div/ul/li[1]/a
+${Shipping}    xpath = //*[@id="util"]/div/ul[2]/li[5]/a
+${ShoppingCart}    xpath = //*[@id="util"]/div/ul[2]/li[6]/a
+
+*** Keywords ***
+Global Navigation
+     Mouse Over    ${SwitchLang}
+     Element Should Contain    ${Lang}    English (EN)
+     Mouse Over    ${SellOn11st}
+     Element Should Contain    ${SellOn11st_item}    11st Seller Office
+     Click Element    ${Login}
+     Click Element    ${Register}
+     Click Element    ${CustomerService}
+     Click Element    ${Shipping} 
+     Click Element    ${ShoppingCart} 
+     Mouse Over    ${MyPage}
+     Element Should Contain    ${MyPage_item}    คูปอง
+          
+Menu Main
+   # Open Browser    ${URL}    ${BROWSER}
+    Click Element   ${ShockingDeals}
+    Click Element   ${ShockingDealsTab}
+    Sleep    3s
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)  #Auto scroll Page to bottom
+    Execute Javascript    window.scrollTo(0, document.body.scrollTop)    #Auto scroll Page to top
+      
+    Click Element   ${BestSeller}
+    Click Element   ${BestSellersTab}
+    Execute Javascript    window.scrollTo(0, document.body.scrollHeight)  #Auto scroll Page to bottom
+    Execute Javascript    window.scrollTo(0, document.body.scrollTop)    #Auto scroll Page to top
+        
+    Click Element   ${Benefits}
+    Click Element   ${BenefitsTab}
+    Execute Javascript    window.scrollTo(0, document.body.scrollTop)
+    Click Element   ${SmallBanner} 
+    
+    Close All Browsers
+    
+ 
+
+

@@ -1,0 +1,100 @@
+*** Settings ***
+Library    Selenium2Library
+Library    String
+Library    random
+    
+
+*** Variables ***
+
+#Login to Homepage#
+${Login}    id = gnbLogin
+${Email}      id =  loginName
+${Password}   id =  passWord
+${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
+
+#Register New Buyer #
+${regisNew_btn}    id = gnbRegister
+${buyer_btn}    xpath = //ul[2]/li[1]/a[@class=('btn_st btn_em5 btn_s5')]
+${regis_name}    id = memNM
+${buyer_email}    id = memIDView
+${buyer_password}    id = mem_pwd
+${buyer_re-password}    id = mem_re_pwd
+${register_btn}    xpath = //div[@class='btn_c btn_t']/button[contains(@onclick, 'javascript:registMember')]
+
+#Register Individual Seller #  
+${ind_seller_btn}    xpath = //ul[2]/li[2]/a[@class=('btn_st btn_em5 btn_s5')]
+${DOB_date}    name = day
+${datelist}    xpath = //tr[3]/td/select[1]
+
+
+
+*** Keywords ***
+Login to Homepage
+  # Maximize Browser Window 
+    Click Element    ${Login}
+    Click Element    ${Email} 
+    Input Text     loginName    thqa-10@outlook.com  
+    Click Element    ${Password}
+    Input Password    passWord    1q2w3e4r
+    Click Element    ${Login_btn}
+    
+Register New Buyer
+    [Arguments]    ${random_name}    ${domain}=aaa.com
+    Click Element    ${regisNew_btn}
+    Click Element    ${buyer_btn}
+    # Name
+    Click Element    ${regis_name}
+    ${random_name} =    Generate Random String    8
+    Input Text    ${regis_name}    ${random_name}
+    
+    # Email
+    Click Element    ${buyer_email}
+    ${unique_name}=    Generate Random String    8   [LETTERS]
+    ${ranEmail}=    Set Variable    ${unique_name}@${domain}
+    [Return]    ${ranEmail}     ${ranPWD} 
+    Input Text    ${buyer_email}    ${ranEmail}
+    
+    # Password 
+    Click Element    ${buyer_password}
+    ${random_pwd} =    Generate Random String    8
+    ${ranPWD} =    Set Variable    ${random_pwd}@
+    Input Password    ${buyer_password}    ${ranPWD}
+    
+    # Confirm Password
+    Click Element    ${buyer_re-password}
+    Input Password    ${buyer_re-password}    ${ranPWD}
+    
+    Click Button    ${register_btn}
+    
+    
+Register New Individual Seller
+    [Arguments]    ${random_name}    ${domain}=aaa.com
+    Click Element    ${regisNew_btn}
+    Click Element    ${ind_seller_btn}
+    # Name
+    Click Element    ${regis_name}
+     ${random_name} =    Generate Random String    8
+    Input Text    ${regis_name}    ${random_name}
+    
+     # Email
+    Click Element    ${buyer_email}
+    ${unique_name} =    Generate Random String    8   [LETTERS]
+    ${ranEmail}=    Set Variable    ${unique_name}@${domain}
+    [Return]    ${ranEmail}
+    Input Text    ${buyer_email}    ${ranEmail}
+    
+    # DOB
+    # ${number} =    Evaluate    random.sample(range(1, 11), 1)    random
+    # :FOR    ${i}    IN RANGE    1    31
+    # \    ${randate} =    Convert To Number    ${number}[${i}]
+    # # ${num} =    Generate Random String    1   [NUMBERS]
+    # Select From List By Value	${DOB_date}    ${randate}
+    # ${child node click value}=      random.randint    1    31
+    # ${aaa} =    Convert To Number    ${child node click value} 
+    # Select From List By Value    ${datelist}    ${aaa}   
+    
+    
+    # ${numbers} =    Generate Random String    1   [NUMBERS] 
+    ${numbers} =    Evaluate    random.randint(1, 31)    	modules=random
+    ${aaa} =    Convert To String   ${numbers}
+    Select From List By Value    ${DOB_date}    ${aaa}

@@ -1,0 +1,41 @@
+*** Settings ***
+Library    Selenium2Library
+
+
+*** Variables ***
+${SearchField}  id =  AKCKwd
+${TextField}    id =  AKCKwd
+${SearchIcon}  xpath = //*[@id="tSearch"]/button
+${ListView}    xpath = //*[@id="searchCondition_wrap"]/div/span/a[1]
+${HomeLogo}    class = 11street
+${TH_Search}   xpath = //*[@id="contents"]/div[1]/nav/h2/span/text()
+${OpenPd}    xpath = //*[@id="product_listing"]/ul/li[1]/div/div/div[1]/a
+${SwitchLang}    id = switcher-language
+${Lang}    xpath = //*[@id="util"]/div/ul[1]/li[1]/div/ul/li[2]/a
+${FieldSet}    id = tSearch
+
+
+*** Keywords ***
+Search TH
+    Wait Until Page Contains Element    ${FieldSet}
+    Click Element   ${SearchField}
+    Input Text     AKCKwd    เดรส
+    Click Element    ${SearchIcon} 
+  # Click Element    ${ListView}
+    #Page Should Contain Element   ${TH_Search}    การค้นหาแบบครบวงจร
+    Sleep    2s 
+  #  Close All Browsers    
+
+
+Search EN
+    Click Element   ${SearchField}
+    Mouse Over    ${SwitchLang}
+    Click Element    ${Lang} 
+    Click Element   ${SearchField}
+    Input Text     AKCKwd    Dress
+    Click Element    ${SearchIcon} 
+    Click Element    ${ListView}
+    Close All Browsers
+    
+    
+    
