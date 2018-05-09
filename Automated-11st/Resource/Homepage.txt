@@ -23,26 +23,29 @@ ${Login}    id = gnbLogin
 ${Register}    id = gnbRegister
 ${CustomerService}    xpath = //*[@id="util"]/div/ul[2]/li[3]/a
 ${MyPage}   id= myPage
-${MyPage_item}    xpath = //*[@id="util"]/div/ul[2]/li[4]/div/ul/li[1]/a
+${MyPage_item}    xpath = //*[@id="util"]/div/ul[2]/li[4]/div/ul/li[2]/a
 ${Shipping}    xpath = //*[@id="util"]/div/ul[2]/li[5]/a
-${ShoppingCart}    xpath = //*[@id="util"]/div/ul[2]/li[6]/a
+${ShoppingCart}	    xpath = //*[@id="util"]/div/ul[2]/li[6]/a
 
 *** Keywords ***
 Global Navigation
      Mouse Over    ${SwitchLang}
      Element Should Contain    ${Lang}    English (EN)
+     Click Element    ${Lang}
      Mouse Over    ${SellOn11st}
      Element Should Contain    ${SellOn11st_item}    11st Seller Office
+     Mouse Over    ${MyPage}
+     Element Should Contain    ${MyPage_item}    Points    
      Click Element    ${Login}
-     Click Element    ${Register}
+     Click Element    ${Register}  
      Click Element    ${CustomerService}
      Click Element    ${Shipping} 
+     Wait Until Element Is Visible     ${ShoppingCart}     
      Click Element    ${ShoppingCart} 
-     Mouse Over    ${MyPage}
-     Element Should Contain    ${MyPage_item}    คูปอง
-          
+           
 Menu Main
    # Open Browser    ${URL}    ${BROWSER}
+    Wait Until Element Is Visible     ${ShockingDeals}
     Click Element   ${ShockingDeals}
     Click Element   ${ShockingDealsTab}
     Sleep    3s
@@ -59,7 +62,6 @@ Menu Main
     Execute Javascript    window.scrollTo(0, document.body.scrollTop)
     Click Element   ${SmallBanner} 
     
-    Close All Browsers
     
  
 

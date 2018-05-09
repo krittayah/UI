@@ -10,7 +10,7 @@ ${FieldSet}    id = tSearch
 
 # CLICK BUY NOW #
 ${BuyNow_btn}    xpath = //div[@class='btn_go']/a[contains(@onclick, 'buyNow')]
-${OrderShipping_Nextbtn}   //div[@class='btn_c btn_next'] 
+${OrderShipping_Nextbtn}   xpath = //div[@class='btn_c btn_next'] 
 ${Checkbox}    id = chkBox
 ${OpenPd}    xpath = //[@id="product_listing"]/ul/li[1]/div/div/div[1]/a
 

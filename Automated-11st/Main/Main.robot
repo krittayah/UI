@@ -6,12 +6,14 @@ Resource    ../Resource/Search.txt
 Resource    ../Resource/Homepage.txt
 Resource    ../Resource/BuyProduct.txt
 Resource    ../Resource/ShoppingCart.txt
-Suite Setup    Open Browser    http://www.11street.co.th    Chrome    
-#Suite Teardown    Close All Browsers
+Resource    ../Resource/Variables.txt
+Suite Setup    Open Browser    http://www.11street.co.th    Chrome
+# Suite Teardown    Close All Browsers
+
  
 *** Variables ***
-${BROWSER}  Chrome
-${URL}      http://www.11street.co.th
+# ${BROWSER}  Chrome 
+# ${URL}      http://www.11street.co.th  
    
 
 *** Keywords ***    
@@ -19,25 +21,30 @@ ${URL}      http://www.11street.co.th
     # Open Browser    ${URL}    ${BROWSER}
     # Maximize Browser Window
     
-*** Test Cases ***
-
-Register
-    #Register New Buyer    aaa@aa.a
-    Register New Individual Seller    aaa@aa.a
-
-# Buy Product
-    # Open Homepage
+ 
+    
+*** Test Cases ***  
+                          
+# Register
+    # Register New Buyer    aaa@aa.a
+    # Register New Individual Seller    aaa@aa.a
+Check Open Homepage
+    Maximize Browser Window
     # Global Navigation
     # Menu Main
-    # Login to Homepage
-    # Search TH    เดรส
-    # Search EN
-    # Check Link on Homepage
-    # Switch to Product Detail Page    เดรส
-    # Buy Single Product Successfully    
-    # Continue Shopping
+    Login to Homepage
     
-# Add To Shopping Cart
-    # Add To Cart
-    # Get Order Shipping Info
+Search Product
+    Search EN 
+           
+Add To Shopping Cart
+    Add To Cart
+    Get Order Shipping Info
+    
+Buy Product
+    Switch to Product Detail Page    เดรส
+    Buy Single Product Successfully    
+    Continue Shopping
+    
+
     

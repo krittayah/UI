@@ -35,7 +35,7 @@ Search EN
     Input Text     AKCKwd    Dress
     Click Element    ${SearchIcon} 
     Click Element    ${ListView}
-    Close All Browsers
+
     
     
     

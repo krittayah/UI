@@ -10,14 +10,13 @@ Resource    ../Resource/ShoppingCart.txt
     
 
 *** Variables ***
-
-#Login to Homepage#
+#Login to Homepage
 ${Login}    id = gnbLogin
 ${Email}      id =  loginName
 ${Password}   id =  passWord
 ${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
 
-#Register New Buyer#
+#Register New Buyer
 ${regisNew_btn}    id = gnbRegister
 ${buyer_btn}    xpath = //ul[2]/li[1]/a[@class=('btn_st btn_em5 btn_s5')]
 ${regis_name}    id = memNM
@@ -26,7 +25,7 @@ ${buyer_password}    id = mem_pwd
 ${buyer_re-password}    id = mem_re_pwd
 ${register_btn}    xpath = //div[@class='btn_c btn_t']/button[contains(@onclick, 'javascript:registMember')]
 
-#Register Individual Seller#  
+#Register Individual Seller
 ${ind_seller_btn}    xpath = //ul[2]/li[2]/a[@class=('btn_st btn_em5 btn_s5')]
 ${DOB_date}    name = day
 ${DOB_month}    name = month
@@ -35,7 +34,26 @@ ${ind_phone_no}    id = memPrtblTlphnNO1
 ${ind_shop_name}    id = chkMemNickNM
 ${ind_shop_url}    id = chkSelstoreUrl
 
-#Person in Charge#
-${ind_checkbox}    //div[5]/table/tbody/tr[1]/td/div[1]/label/input[@type=('checkbox')]
+#Person in Charge
+${ind_checkbox}    xpath = //div[5]/table/tbody/tr[1]/td/div[1]/label/input[@type=('checkbox')]
 ${ind_picName}    id = crgrNm
+${ind_phoneNum}    id = gnrlTlphnNO
 
+# Shipping Address
+${ind_ShipAdd}    id = addrDetail1
+${shippingAdd}    689 อาคารภิรัช ถนนสุขุมวิท, แขวงคลองตันเหนือ
+${province}    id = addrProvince1
+${city}    id = addrCity1
+${postcode}    id = addrPostcode1
+
+# Return Address
+${ind_return_checkbox}    xpath = //div[5]/table/tbody/tr[9]/td/div/label/input[@type=('checkbox')]
+
+# Bank Account
+${ind_bankName}    id = bankCD
+${ind_accName}    id = acctOwnNM
+${ind_accNo}    id = acctNO
+${ind_Brandname}    id = branchNM
+
+# Required Documents
+${ind_reqDoc}    name = documentSendType

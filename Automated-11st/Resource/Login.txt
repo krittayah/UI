@@ -7,31 +7,32 @@ Resource    ../Resource/Variables.txt
 
 *** Variables ***
 
-# #Login to Homepage#
+#Login to Homepage
 # ${Login}    id = gnbLogin
 # ${Email}      id =  loginName
 # ${Password}   id =  passWord
 # ${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
 
-# #Register New Buyer #
-# ${regisNew_btn}    id = gnbRegister
-# ${buyer_btn}    xpath = //ul[2]/li[1]/a[@class=('btn_st btn_em5 btn_s5')]
-# ${regis_name}    id = memNM
-# ${buyer_email}    id = memIDView
-# ${buyer_password}    id = mem_pwd
-# ${buyer_re-password}    id = mem_re_pwd
-# ${register_btn}    xpath = //div[@class='btn_c btn_t']/button[contains(@onclick, 'javascript:registMember')]
+#Register New Buyer
+${regisNew_btn}    id = gnbRegister
+${buyer_btn}    xpath = //ul[2]/li[1]/a[@class=('btn_st btn_em5 btn_s5')]
+${regis_name}    id = memNM
+${buyer_email}    id = memIDView
+${buyer_password}    id = mem_pwd
+${buyer_re-password}    id = mem_re_pwd
+${register_btn}    xpath = //div[@class='btn_c btn_t']/button[contains(@onclick, 'javascript:registMember')]
 
-# #Register Individual Seller #  
-# ${ind_seller_btn}    xpath = //ul[2]/li[2]/a[@class=('btn_st btn_em5 btn_s5')]
-# ${DOB_date}    name = day
-# ${DOB_month}    name = month
-# ${DOB_year}    name = year
-# ${ind_phone_no}    id = memPrtblTlphnNO1
+#Register Individual Seller 
+${ind_seller_btn}    xpath = //ul[2]/li[2]/a[@class=('btn_st btn_em5 btn_s5')]
+${DOB_date}    name = day
+${DOB_month}    name = month
+${DOB_year}    name = year
+${ind_phone_no}    id = memPrtblTlphnNO1
+
 
 *** Keywords ***
 Login to Homepage
-  # Maximize Browser Window 
+    Maximize Browser Window 
     Click Element    ${Login}
     Click Element    ${Email} 
     Input Text     loginName    thqa-10@outlook.com  
@@ -91,7 +92,7 @@ Register New Individual Seller
     # ${number} =    Evaluate    random.sample(range(1, 11), 1)    random
     # :FOR    ${i}    IN RANGE    1    31
     # \    ${randate} =    Convert To Number    ${number}[${i}]
-    # # ${num} =    Generate Random String    1   [NUMBERS]
+    # ${num} =    Generate Random String    1   [NUMBERS]
     # Select From List By Value	${DOB_date}    ${randate}
     # ${child node click value}=      random.randint    1    31
     # ${aaa} =    Convert To Number    ${child node click value} 
@@ -130,7 +131,7 @@ Register New Individual Seller
     # ${ranPWD} =    Set Variable    ${random_pwd}@
     # Input Password    ${buyer_password}    ${ranPWD}
     #Click Element    ${buyer_re-password}
-    #Element Should Be Visible    //div[3]/table/tbody/tr[7]/td/em    กรอกรหัสผ่านความยาว 6-20 ตัวอักษร
+    #Element Should Be Visible    //div[3]/table/tbody/tr[7]/td/em    กรอกรหัสผ่านความยาว phone6-20 ตัวอักษร
     Click Element    ${buyer_password}
     ${random_pwd} =    Generate Random String    8
     ${ranPWD} =    Set Variable    ${random_pwd}@
@@ -143,10 +144,40 @@ Register New Individual Seller
     # Person in Charge
     Select Checkbox    ${ind_checkbox} 
     Click Element    ${ind_picName}
-    ${random_name} =    Generate Random String    8
     Input Text    ${ind_picName}    ${random_name}
     
+    # Phone number
+    Click Element    ${ind_phoneNum}
+    Input Text    ${ind_phone_no}    ${random_phone_no}
     
-    # 
+    # Shipping address
+    Click Element    ${ind_ShipAdd}
+    Input Text    ${ind_ShipAdd}    ${shippingAdd}
     
+    # Province
+    Select From List By Index    ${province}    1
+    Select From List By Index    ${city}    1 
+    Select From List By Index    ${postcode}    1
     
+    # Return Address
+    Select Checkbox    ${ind_return_checkbox}
+    
+    # Bank Account
+    ${numbers} =    Evaluate    random.randint(400, 414)    	modules=random
+    ${ranBank} =    Convert To String   ${numbers}
+    Select From List By Value    ${ind_bankName}    ${ranBank}
+    # Account Holder's Name
+    Input Text    ${ind_accName}    ${random_name}
+    # Account no.
+    Click Element    ${ind_accNo}
+    ${randomAccNo} =    Generate Random String    10    [NUMBERS]
+    Input Text    ${ind_accNo}    ${randomAccNo}
+    # Branch Name
+    Click Element    ${ind_Brandname}
+    ${randomAccNo} =    Generate Random String    12    [LETTERS]
+    Input Text    ${ind_Brandname}    ${randomAccNo}    
+    
+    # Required Document
+    Click Element    ${ind_reqDoc}
+    
+    Click Button    ${register_btn}
