@@ -16,14 +16,14 @@ ${FieldSet}    id = tSearch
 
 
 *** Keywords ***
-Search TH
-    Wait Until Page Contains Element    ${FieldSet}
-    Click Element   ${SearchField}
-    Input Text     ${SearchField}    เดรส
-    Click Element    ${SearchIcon} 
-  # Click Element    ${ListView}
-    #Page Should Contain Element   ${TH_Search}    การค้นหาแบบครบวงจร
-    Sleep    2s
+# Search TH
+    # Wait Until Page Contains Element    ${FieldSet}
+    # Click Element   ${SearchField}
+    # Input Text     ${SearchField}    เดรส
+    # Click Element    ${SearchIcon} 
+  # # Click Element    ${ListView}
+    # #Page Should Contain Element   ${TH_Search}    การค้นหาแบบครบวงจร
+    # Sleep    2s
 
 
 

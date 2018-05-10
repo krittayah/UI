@@ -9,7 +9,7 @@ ${SearchIcon}  xpath = //[@id="tSearch"]/button
 ${FieldSet}    id = tSearch
 
 # CLICK BUY NOW #
-${BuyNow_btn}    xpath = //div[@class='btn_go']/a[contains(@onclick, 'buyNow')]
+${BuyNow_btn}    id = btnNextGo
 ${OrderShipping_Nextbtn}   xpath = //div[@class='btn_c btn_next'] 
 ${Checkbox}    id = chkBox
 ${OpenPd}    xpath = //[@id="product_listing"]/ul/li[1]/div/div/div[1]/a
@@ -26,6 +26,7 @@ ${continueShopping_btn}    xpath = //div[@class='btn_c']/a
 
 
 *** Keywords ***
+
 Switch to Product Detail Page
     [Tags]    MultiWindow
     [Arguments]    ${SearchKeyword}
@@ -39,13 +40,9 @@ Switch to Product Detail Page
     Select Window    NEW
 
 Buy Single Product Successfully
-    Click Element    ${BuyNow_btn} 
+    
     [Tags]    Buy New Single Product
-    Execute JavaScript    window.scrollTo(0,900) 
     Sleep	2
-    Select Checkbox    ${Checkbox} 
-    Click Element    ${OrderShipping_Nextbtn} 
-    Sleep	2    
     Execute JavaScript    window.scrollTo(0,700) 
     Click Element    ${Existing_CreditCard}
     Click Element    ${Dropdown_value} 

@@ -27,18 +27,14 @@ Validate login
     # Global Navigation
     # Menu Main
     Login to Homepage
-       
-Search Product
-    Search TH
            
 Add To Shopping Cart
-    Switch to Product Detail Page    dress
+    Switch to Product Detail Page    เดรส
     Add To Cart
-    # Get Order Shipping Info
+    Get Order Shipping Info
     
-# Buy Product
-    # Switch to Product Detail Page    เดรส
-    # Buy Single Product Successfully    
+Buy Product
+    Buy Single Product Successfully    
     # Continue Shopping
 
 # Register

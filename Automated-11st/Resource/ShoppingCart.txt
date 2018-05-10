@@ -12,6 +12,9 @@ ${continueShopping_btn}    xpath = //*[@id="contents"]/div[6]/a
 
 # GET ORDER SHIPPING INFO #
 ${ShippingInfo}    xpath = //div/div[1]/ol/li/span[@class='step_title']
+${shippinginfo_chkbox}    id = chkBox
+${BuyNow_btn}    id = btnNextGo
+
 
 *** Keywords ***
 
@@ -29,7 +32,8 @@ Get Order Shipping Info
     Element Should Be Visible    ${ShippingInfo}    
     Execute JavaScript    window.scrollTo(0,900) 
     Sleep	2
-    Select Checkbox    ${Checkbox} 
+    Select Checkbox    ${shippinginfo_chkbox} 
+    Click Element    ${BuyNow_btn} 
    # Click Element    ${OrderShipping_Nextbtn} 
    # Sleep	2    
     

@@ -39,6 +39,7 @@ Login to Homepage
     Input Text     ${Email}    thqa-10@outlook.com 
     Click Element    ${Password}
     Input Password    ${Password}    1q2w3e4r
+    Select Checkbox    ${save_pwd_chkbox}
     Click Element    ${Login_btn}
 
     
