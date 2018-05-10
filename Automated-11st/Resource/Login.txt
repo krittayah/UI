@@ -29,8 +29,6 @@ ${DOB_month}    name = month
 ${DOB_year}    name = year
 ${ind_phone_no}    id = memPrtblTlphnNO1
 
-# @{province}    = Bangkok       Nonthaburi
-# &{district}    = {'Bangkok':'Bang Bon','Bangkok':'Bang Kapi','Bangkok':'Bang Khae','Bangkok':'Samphanthawong','Nonthaburi':'Bang Bua Thong','Nonthaburi':'Pak Kret'}
 
 *** Keywords ***
 
@@ -43,7 +41,6 @@ Login to Homepage
     Input Password    ${Password}    1q2w3e4r
     Click Element    ${Login_btn}
 
-    
     
 Register New Buyer
     [Arguments]    ${random_name}    ${domain}=aaa.com

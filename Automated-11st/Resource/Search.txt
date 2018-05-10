@@ -19,12 +19,12 @@ ${FieldSet}    id = tSearch
 Search TH
     Wait Until Page Contains Element    ${FieldSet}
     Click Element   ${SearchField}
-    Input Text     AKCKwd    เดรส
+    Input Text     ${SearchField}    เดรส
     Click Element    ${SearchIcon} 
   # Click Element    ${ListView}
     #Page Should Contain Element   ${TH_Search}    การค้นหาแบบครบวงจร
-    Sleep    2s 
-  #  Close All Browsers    
+    Sleep    2s
+
 
 
 Search EN
@@ -32,7 +32,7 @@ Search EN
     Mouse Over    ${SwitchLang}
     Click Element    ${Lang} 
     Click Element   ${SearchField}
-    Input Text     AKCKwd    Dress
+    Input Text     ${SearchField}    Dress
     Click Element    ${SearchIcon} 
     Click Element    ${ListView}
 

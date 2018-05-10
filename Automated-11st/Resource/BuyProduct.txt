@@ -31,7 +31,7 @@ Switch to Product Detail Page
     [Arguments]    ${SearchKeyword}
     Wait Until Page Contains Element    ${FieldSet}
     Click Element   ${SearchField}
-    Input Text     AKCKwd    ${SearchKeyword}
+    Input Text     ${SearchField}    ${SearchKeyword}
     Click Element    ${SearchIcon} 
     Sleep    3
     Click Element    ${OpenPd}
@@ -56,6 +56,7 @@ Buy Single Product Successfully
     # TREEPAY Payment Gateway 
     Select Frame    //iframe
     Click Element    ${treepay_Payment_btn}
+    
 Continue Shopping
     # Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
     Sleep	8       

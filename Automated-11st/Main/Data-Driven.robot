@@ -3,7 +3,7 @@ Library    Selenium2Library
 Library    String
 Library    BuiltIn
 Test Template    Log in
-Test Setup    Open Browser    http://www.11street.co.th    Chrome
+Test Setup    Open Browser    http://www.11street.co.th/html/en/main.html    Chrome
 Test Teardown    Close All Browsers
 
 *** Variables ***
@@ -23,8 +23,8 @@ Log in
     Input Text    ${pwd}    ${password}
     Click Element    ${lLogin_btn} 
 
-
-*** Test Cases ***    Username    Password
+    
+*** Test Cases ***    Username               Password
 Valid login           thqa-10@outlook.com    1q2w3e4r
 Invalid username      thqaaaa@hotmail.com    1q2w3e4r
 Invalid password      thqa-10@outlook.com    11111111

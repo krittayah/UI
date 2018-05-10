@@ -27,13 +27,13 @@ Validate login
     # Global Navigation
     # Menu Main
     Login to Homepage
-    
-    
-# Search Product
-    # Search EN 
+       
+Search Product
+    Search TH
            
-# Add To Shopping Cart
-    # Add To Cart
+Add To Shopping Cart
+    Switch to Product Detail Page    dress
+    Add To Cart
     # Get Order Shipping Info
     
 # Buy Product
