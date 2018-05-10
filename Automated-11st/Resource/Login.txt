@@ -3,15 +3,15 @@ Library    Selenium2Library
 Library    String
 Library    random
 Resource    ../Resource/Variables.txt
-    
 
 *** Variables ***
-
 #Login to Homepage
-# ${Login}    id = gnbLogin
-# ${Email}      id =  loginName
-# ${Password}   id =  passWord
-# ${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
+${Login}    id = gnbLogin
+${Email}      id =  loginName
+${Password}   id =  passWord
+${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
+
+
 
 #Register New Buyer
 ${regisNew_btn}    id = gnbRegister
@@ -29,16 +29,21 @@ ${DOB_month}    name = month
 ${DOB_year}    name = year
 ${ind_phone_no}    id = memPrtblTlphnNO1
 
+# @{province}    = Bangkok       Nonthaburi
+# &{district}    = {'Bangkok':'Bang Bon','Bangkok':'Bang Kapi','Bangkok':'Bang Khae','Bangkok':'Samphanthawong','Nonthaburi':'Bang Bua Thong','Nonthaburi':'Pak Kret'}
 
 *** Keywords ***
+
 Login to Homepage
     Maximize Browser Window 
     Click Element    ${Login}
     Click Element    ${Email} 
-    Input Text     loginName    thqa-10@outlook.com  
+    Input Text     ${Email}    thqa-10@outlook.com 
     Click Element    ${Password}
-    Input Password    passWord    1q2w3e4r
+    Input Password    ${Password}    1q2w3e4r
     Click Element    ${Login_btn}
+
+    
     
 Register New Buyer
     [Arguments]    ${random_name}    ${domain}=aaa.com

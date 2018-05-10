@@ -23,6 +23,8 @@ ${treepay_Payment_btn}   xpath = //input[@type='submit']
 ${thankyou_msg}    xpath = //*[@id="contents"]/div[3]/h3
 ${continueShopping_btn}    xpath = //div[@class='btn_c']/a
 
+
+
 *** Keywords ***
 Switch to Product Detail Page
     [Tags]    MultiWindow
