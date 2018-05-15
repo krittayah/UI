@@ -28,13 +28,15 @@ Validate login
     # Menu Main
     Login to Homepage
            
-Add To Shopping Cart
+Add To Shopping Cart - Bundle product
     Switch to Product Detail Page    เดรส
+    Re-add to cart
+    Switch to Product Detail Page    แก้ว
     Add To Cart
     Get Order Shipping Info
     
-Buy Product
-    Buy Single Product Successfully    
+# Buy Product
+    # Buy Single Product Successfully    
     # Continue Shopping
 
 # Register

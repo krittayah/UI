@@ -60,13 +60,35 @@ ${ind_Brandname}    id = branchNM
 ${ind_reqDoc}    name = documentSendType
 
 # Search Product    
-${SearchField}  id =  AKCKwd
-${TextField}    id =  AKCKwd
-${SearchIcon}  xpath = //*[@id="tSearch"]/button
 ${ListView}    xpath = //*[@id="searchCondition_wrap"]/div/span/a[1]
 ${HomeLogo}    class = 11street
 ${TH_Search}   xpath = //*[@id="contents"]/div[1]/nav/h2/span/text()
-${OpenPd}    xpath = //*[@id="product_listing"]/ul/li[1]/div/div/div[1]/a
 ${SwitchLang}    id = switcher-language
 ${Lang}    xpath = //*[@id="util"]/div/ul[1]/li[1]/div/ul/li[2]/a
+
+
+#---------------------------- BUY PRODUCT ---------------------------- 
+# SEARCH KEYWORDS
+${SearchField}  id =  AKCKwd
+${TextField}    id =  AKCKwd
+${SearchIcon}  xpath = //button[contains(@onclick, 'goSearch')]
 ${FieldSet}    id = tSearch
+
+# CLICK BUY NOW
+${BuyNow_btn}    id = btnNextGo
+${OrderShipping_Nextbtn}   xpath = //div[@class='btn_c btn_next'] 
+${Checkbox}    id = chkBox
+${OpenPd}    xpath = //*[@id="product_listing"]/ul/li[1]/div/div/div[1]/a
+
+# PAYMENT
+${Existing_CreditCard}    id = creditToken
+${Dropdown_value}    xpath = //*[@id="creditToken"]/option[2]
+${CVV}    id= creditCVV
+${Payment_btn}    id = submitCard
+${treepay_Payment_btn}   xpath = //input[@type='submit']
+${thankyou_msg}    xpath = //*[@id="contents"]/div[3]/h3
+${continueShopping_btn}    xpath = //div[@class='btn_c']/a
+
+# COUPON
+${coupon_code}    id = voucherCode
+

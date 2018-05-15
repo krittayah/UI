@@ -27,6 +27,19 @@ Add To Cart
     Sleep    2
     Click Element    ${continueShopping_btn} 
     
+Re-add to cart
+    Sleep    3
+    Click Element  ${addToCart_btn}  
+    Page Should Contain Element    ${addTocart_popup}
+    Sleep    2
+    Click Element    ${addToCart_ok}
+    Sleep    2
+    Select Window    MAIN
+    
+    
+    
+
+    
 Get Order Shipping Info
     Sleep    3
     Element Should Be Visible    ${ShippingInfo}    

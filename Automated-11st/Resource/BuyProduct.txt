@@ -1,28 +1,6 @@
 *** Settings ***
 Library    Selenium2Library
-
-*** Variables ***
-# SEARCH KEYWORDS #
-${SearchField}  id =  AKCKwd
-${TextField}    id =  AKCKwd
-${SearchIcon}  xpath = //[@id="tSearch"]/button
-${FieldSet}    id = tSearch
-
-# CLICK BUY NOW #
-${BuyNow_btn}    id = btnNextGo
-${OrderShipping_Nextbtn}   xpath = //div[@class='btn_c btn_next'] 
-${Checkbox}    id = chkBox
-${OpenPd}    xpath = //[@id="product_listing"]/ul/li[1]/div/div/div[1]/a
-
-# PAYMENT #  
-${Existing_CreditCard}    id = creditToken
-${Dropdown_value}    xpath = //*[@id="creditToken"]/option[2]
-${CVV}    id= creditCVV
-${Payment_btn}    id = submitCard
-${treepay_Payment_btn}   xpath = //input[@type='submit']
-${thankyou_msg}    xpath = //*[@id="contents"]/div[3]/h3
-${continueShopping_btn}    xpath = //div[@class='btn_c']/a
-
+Resource    ../Resource/Variables.txt
 
 
 *** Keywords ***
@@ -58,3 +36,10 @@ Continue Shopping
     # Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
     Sleep	8       
     Click Element    ${continueShopping_btn}
+    
+Use coupon
+    
+    
+
+    
+    
