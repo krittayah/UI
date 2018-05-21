@@ -11,8 +11,6 @@ ${Email}      id =  loginName
 ${Password}   id =  passWord
 ${Login_btn}  xpath = //*[@id="container"]/article/div[1]/fieldset/div[2]/button
 
-
-
 #Register New Buyer
 ${regisNew_btn}    id = gnbRegister
 ${buyer_btn}    xpath = //ul[2]/li[1]/a[@class=('btn_st btn_em5 btn_s5')]
@@ -181,6 +179,16 @@ Register New Individual Seller
     Input Text    ${ind_Brandname}    ${randomAccNo}    
     
     # Required Document
-    Click Element    ${ind_reqDoc}
-    
+    Click Element   ${ind_reqDoc}
     Click Button    ${register_btn}
+    
+Log-in from Product Detail
+    Select Frame    id = layerPopupForLogin
+    Wait Until Page Contains Element    id = loginName  
+    Click Element    ${Email}
+    Input Text     ${Email}    thqa-10@outlook.com 
+    Click Element    ${Password}
+    Input Password    ${Password}    1q2w3e4r
+    Select Checkbox    ${save_pwd_chkbox}
+    Click Button    xpath = //div[@class='btn1']/button[contains(@onclick, 'javascript:checkForm')]
+    

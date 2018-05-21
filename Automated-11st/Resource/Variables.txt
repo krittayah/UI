@@ -74,6 +74,12 @@ ${TextField}    id =  AKCKwd
 ${SearchIcon}  xpath = //button[contains(@onclick, 'goSearch')]
 ${FieldSet}    id = tSearch
 
+# ADD TO CART #
+${addToCart_btn}    xpath = //div[@class='btn_go']/a[contains(@onclick, 'addToCart')]
+${addTocart_popup}    id = mo_lay144
+${addToCart_ok}    xpath = //*[@id="mo_lay144"]/div/div[3]/a[1]
+${continueShopping_btn}    xpath = //*[@id="contents"]/div[6]/a
+
 # CLICK BUY NOW
 ${BuyNow_btn}    id = btnNextGo
 ${OrderShipping_Nextbtn}   xpath = //div[@class='btn_c btn_next'] 
@@ -87,8 +93,9 @@ ${CVV}    id= creditCVV
 ${Payment_btn}    id = submitCard
 ${treepay_Payment_btn}   xpath = //input[@type='submit']
 ${thankyou_msg}    xpath = //*[@id="contents"]/div[3]/h3
-${continueShopping_btn}    xpath = //div[@class='btn_c']/a
 
 # COUPON
 ${coupon_code}    id = voucherCode
+${coupon_single_code}    6L5726UG23757647
+${applyCoupon_btn}    id = btnVoucherApply
 

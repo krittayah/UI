@@ -1,6 +1,16 @@
 *** Settings ***
 Library    Selenium2Library
+Library    String    
 Resource    ../Resource/Variables.txt
+
+*** Variables ***
+${buy_btn}    xpath = //div[@class='btn_go']/a[contains(@onclick, 'buyNow')]
+
+# Payment New Card
+${creditcard_field}    id = creditCardNumber
+${fullname_field}    id = creditFullName
+${cardexpired_field}    id = cardExpire
+${cvv_field}    id = creditCVV
 
 
 *** Keywords ***
@@ -16,10 +26,14 @@ Switch to Product Detail Page
     Click Element    ${OpenPd}
     Sleep    3
     Select Window    NEW
-
-Buy Single Product Successfully
     
-    [Tags]    Buy New Single Product
+Buy Now
+    Sleep    2    
+    Click Element    ${buy_btn}
+    # Sleep    2
+
+Credit Card Payment (Select existing card)
+    [Tags]    Select existing credit card
     Sleep	2
     Execute JavaScript    window.scrollTo(0,700) 
     Click Element    ${Existing_CreditCard}
@@ -32,13 +46,47 @@ Buy Single Product Successfully
     Select Frame    //iframe
     Click Element    ${treepay_Payment_btn}
     
+Credit Card Payment (New card)
+    [Tags]    Insert new credit card 
+    Sleep	2
+    Execute JavaScript    window.scrollTo(0,700) 
+    Click Element    ${creditcard_field}
+    Input Text    ${creditcard_field}    4000 0000 0000 0002
+      
+    Click Element    ${fullname_field}
+    ${random_Fname} =    Generate Random String    4    [LETTERS]
+    ${random_Lname} =    Generate Random String    4    [LETTERS]
+    ${ranFullname} =    Set Variable    ${random_Fname} ${random_Lname}
+    Input Password    ${fullname_field}    ${ranFullname}
+    
+    Click Element    ${cardexpired_field}
+    ${random_Cardexp} =    Generate Random String    3    [NUMBERS]
+    Input Text    ${cardexpired_field}    ${random_Cardexp}
+    
+    Click Element    ${cvv_field}
+    ${random_cvv} =    Generate Random String    3    [NUMBERS]
+    Input Text    ${cvv_field}    ${random_cvv}
+    
+	Click Button    ${Payment_btn}
+    
 Continue Shopping
     # Execute Javascript    window.scrollTo(0, document.body.scrollHeight)
     Sleep	8       
     Click Element    ${continueShopping_btn}
     
-Use coupon
-    
+Single Code Coupon
+    [Tags]    Single Code Coupon
+    Sleep	2
+    Click Element    ${coupon_code}
+    Input Text    ${coupon_code}    ${coupon_single_code}
+    Click Element    ${applyCoupon_btn}
+    ${alert} =	Get Alert Message    คุณมีคูปองที่ได้รับส่วนลดมากกว่า voucher คุณจะไปยังหน้าคูปองส่วนลดเพื่อทำการใช้คูปองอื่นหรือไม่
+    Select Window    CURRENT
+
+Verify Buy Product 
+# Without insert credit card detail, there will be 
+    Execute JavaScript    window.scrollTo(0,900) 
+    Click Button    ${Payment_btn}
     
 
     

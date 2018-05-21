@@ -36,10 +36,6 @@ Re-add to cart
     Sleep    2
     Select Window    MAIN
     
-    
-    
-
-    
 Get Order Shipping Info
     Sleep    3
     Element Should Be Visible    ${ShippingInfo}    

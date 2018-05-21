@@ -7,7 +7,7 @@ Resource    ../Resource/Homepage.txt
 Resource    ../Resource/BuyProduct.txt
 Resource    ../Resource/ShoppingCart.txt
 Resource    ../Resource/Variables.txt
-Suite Setup    Open Browser    http://www.11street.co.th    Chrome
+Suite Setup    Open Browser    https://www.11street.co.th    Chrome
 #Suite Teardown    Close All Browsers
 
 
@@ -22,22 +22,26 @@ Suite Setup    Open Browser    http://www.11street.co.th    Chrome
     # Maximize Browser Window
 
 *** Test Cases ***  
-Validate login
-    Maximize Browser Window
+Buy Product
+    Login to Homepage
+    Switch to Product Detail Page    เดรส
+    Buy Now
+    # Log-in from Product Detail
+    Get Order Shipping Info
+    #Single Code Coupon
+    Credit Card Payment (New card)
+    
     # Global Navigation
     # Menu Main
-    Login to Homepage
+    # Login to Homepage
            
-Add To Shopping Cart - Bundle product
-    Switch to Product Detail Page    เดรส
-    Re-add to cart
-    Switch to Product Detail Page    แก้ว
-    Add To Cart
-    Get Order Shipping Info
-    
-# Buy Product
-    # Buy Single Product Successfully    
-    # Continue Shopping
+# Add To Shopping Cart - Bundle product
+    # Switch to Product Detail Page    เดรส
+    # Re-add to cart
+    # Switch to Product Detail Page    แก้ว
+    # Add To Cart
+    # Get Order Shipping Info
+
 
 # Register
     # Register New Buyer    aaa@aa.a
